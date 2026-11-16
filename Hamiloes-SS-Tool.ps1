@@ -882,7 +882,8 @@ if ($startChoice -eq '1') {
 </Window>
 "@
 
-$disclaimerReader = New-Object System.Xml.XmlNodeReader $disclaimerXaml
+
+$disclaimerReader = New-Object [System.Windows.Markup.XamlReader] $disclaimerXaml
 $disclaimerWindow = [System.Windows.Markup.XamlReader]::Load($disclaimerReader)
 $disclaimerWindow.Add_MouseLeftButtonDown({ try { $disclaimerWindow.DragMove() } catch {} })
 
@@ -1687,7 +1688,7 @@ foreach ($cat in $Categories) {
         $btnGlow.Opacity     = 0
 
         # Minimal template - binds to the PS-created objects via tag
-        $btn.Template = [Windows.Markup.XamlReader]::Parse(
+        $btn.Template = [System.Windows.Markup.XamlReader]::Parse(
             "<ControlTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' TargetType='Button'>" +
             "  <Border CornerRadius='6' BorderThickness='1' RenderTransformOrigin='0.5,0.5'" +
             "          Background='{TemplateBinding Background}'" +
