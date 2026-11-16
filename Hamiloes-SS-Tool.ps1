@@ -883,7 +883,7 @@ if ($startChoice -eq '1') {
 "@
 
 $disclaimerReader = New-Object System.Xml.XmlNodeReader $disclaimerXaml
-$disclaimerWindow = [Windows.Markup.XamlReader]::Load($disclaimerReader)
+$disclaimerWindow = [System.Windows.Markup.XamlReader]::Load($disclaimerReader)
 $disclaimerWindow.Add_MouseLeftButtonDown({ try { $disclaimerWindow.DragMove() } catch {} })
 
 $CancelBtn = $disclaimerWindow.FindName("CancelBtn")
@@ -909,7 +909,7 @@ if (-not $script:disclaimerAccepted) {
 }
 
 $reader = New-Object System.Xml.XmlNodeReader $xaml
-$window = [Windows.Markup.XamlReader]::Load($reader)
+$window = [System.Windows.Markup.XamlReader]::Load($reader)
 
 $MinBtn        = $window.FindName("MinBtn")
 $CloseBtn      = $window.FindName("CloseBtn")
